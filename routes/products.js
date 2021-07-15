@@ -2,8 +2,20 @@ const express = require("express");
 const router = express.Router();
 const Product = require("../models/Product");
 const mongoose = require("mongoose");
+const multer = require("multer");
+const upload = multer({dest: 'uploads/'});
 
-router.get("/", (req, res, next) => {
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cd(null, './uploads');
+  },
+  filename: function(req, file, cb) {
+    cb(null, file)
+  }
+}) 
+
+router.get("/", upload.single('productImage'), (req, res, next) => {
+  console.log(req.file);
   Product.find()
   .select("name price _id")
   .exec()
