@@ -74,30 +74,30 @@ router.route("/update/:id").put(async (req, res) => {
 });
 
 //delete opersation
-router.route("/delete/:id").delete(async (req, res) => {
-  let userId = req.params.id;
+// router.route("/delete/:id").delete(async (req, res) => {
+//   let userId = req.params.id;
 
-  await Student.findByIdAndDelete(userId).then(() => {
-    res.status(200).send({ status: "User deleted." })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).send({ status: "Error with update.", error: err.message });
-      });
-  });
-});
+//   await Student.findByIdAndDelete(userId).then(() => {
+//     res.status(200).send({ status: "User deleted." })
+//       .catch((err) => {
+//         console.log(err);
+//         res.status(500).send({ status: "Error with update.", error: err.message });
+//       });
+//   });
+// });
 
 //get a data from onece user
-router.route("/get/:id").get(async (req, res) => {
-  let userId = req.params.id;
-  //this use the id, therefore we use findbyid, but we use userr email then we
-  //should use the findOne(primaryKey)
-  const user = await Student.findById(userId).then((student) => {
-    res.status(200).send({status: "user fetch", data: student})
-  }).catch((err) => {
-    console.log(err.message);
-    res.status(500).send({status: "Error with get user", error: err.message})
-  })
-})
+// router.route("/get/:id").get(async (req, res) => {
+//   let userId = req.params.id;
+//   //this use the id, therefore we use findbyid, but we use userr email then we
+//   //should use the findOne(primaryKey)
+//   const user = await Student.findById(userId).then((student) => {
+//     res.status(200).send({status: "user fetch", data: student})
+//   }).catch((err) => {
+//     console.log(err.message);
+//     res.status(500).send({status: "Error with get user", error: err.message})
+//   })
+// })
 
 //adding commit for checking 111
 //adding commit for branches in checking
